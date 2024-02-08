@@ -107,7 +107,7 @@ public class CartPage extends CommonPage {
             assertEquals( "Please fill out Name and Creditcard.", dialog.message() );
             dialog.accept();
         } );
-        getPage().evaluate( "alert('Please fill out Name and Creditcard.')" );
+        btnPurchaseOrder.click();
     }
 
 }

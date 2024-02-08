@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static demo.test.lucas.factory.PlaywrightFactory.getPage;
+import static org.junit.Assert.assertEquals;
 
 
 public class CommonPage {
@@ -28,5 +29,13 @@ public class CommonPage {
 
     public void selectCartMenu() {
         cartMenu.click();
+    }
+
+    public void handleAlert( String text ) {
+        getPage().onDialog( dialog -> {
+            assertEquals( "alert", dialog.type() );
+            assertEquals( text, dialog.message() );
+            dialog.dismiss();
+        } );
     }
 }
